@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Day /> should match snapshot 1`] = `
+<WithStyles(ForwardRef(ButtonBase))
+  className="makeStyles-day-1 makeStyles-hovering-2"
+  disabled={false}
+  onClick={[Function]}
+>
+  <WithStyles(Typography)
+    className=""
+    color="indigo"
+    variant="text"
+  >
+    20
+  </WithStyles(Typography)>
+</WithStyles(ForwardRef(ButtonBase))>
+`;
