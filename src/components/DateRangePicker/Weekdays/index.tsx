@@ -1,10 +1,8 @@
 import React, { useMemo } from 'react'
 
 import clsx from 'clsx'
-import addDays from 'date-fns/addDays'
-import startOfWeek from 'date-fns/startOfWeek'
-import format from 'date-fns/format'
 
+import useUtils from '../../../hooks/useUtils'
 import Typography from '../../Typography'
 
 import useStyles from './useStyles'
@@ -14,15 +12,16 @@ export interface WeekdaysProps {
 }
 
 export const Weekdays: React.FC<WeekdaysProps> = ({ showWeekends = true }) => {
+  const { addDays, startOfWeek, formatByString } = useUtils()
   const classes = useStyles()
 
   const firstDOW = startOfWeek(new Date())
   const shortWeekDaysArray = useMemo(
     () =>
       Array.from(Array(7)).map((_e, i) =>
-        format(addDays(firstDOW, i), 'EEEEEE'),
+        formatByString(addDays(firstDOW, i), 'EEEEEE')
       ),
-    [firstDOW],
+    [firstDOW]
   )
 
   return (
@@ -31,7 +30,7 @@ export const Weekdays: React.FC<WeekdaysProps> = ({ showWeekends = true }) => {
     >
       {shortWeekDaysArray.map((weekdayName) => (
         <Typography
-          variant="textBold"
+          variant='textBold'
           className={classes.weekdayName}
           key={weekdayName}
         >

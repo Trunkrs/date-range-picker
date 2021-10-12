@@ -1,11 +1,6 @@
 import { useState, useContext, useEffect } from 'react'
 
-import isWithinInterval from 'date-fns/isWithinInterval'
-import isEqual from 'date-fns/isEqual'
-import isBefore from 'date-fns/isBefore'
-import isAfter from 'date-fns/isAfter'
-import isSameMonth from 'date-fns/isSameMonth'
-import lastDayOfMonth from 'date-fns/lastDayOfMonth'
+import useUtils from './useUtils'
 import DateRange from '../components/DateRangePicker/DateRange'
 
 export interface DateHighlightResult {
@@ -17,8 +12,11 @@ export interface DateHighlightResult {
 const useDateHighlight = (
   date: Date,
   outsideDayType: boolean | 'prev' | 'next',
-  calendarMonth?: Date,
+  calendarMonth?: Date
 ): DateHighlightResult => {
+  const { isWithinRange, isEqual, isBefore, isAfter, isSameMonth, endOfMonth } =
+    useUtils()
+
   const [isHighlighted, setIsHighlighted] = useState(false)
   const [isStart, setIsStart] = useState(false)
   const [isEnd, setIsEnd] = useState(false)
@@ -41,13 +39,13 @@ const useDateHighlight = (
         isDateWithinSelectedRange =
           (isAfter(calendarMonth, dateRange.dateStart) ||
             isSameMonth(calendarMonth, dateRange.dateStart)) &&
-          isBefore(lastDayOfMonth(calendarMonth), dateRange.dateEnd)
+          isBefore(endOfMonth(calendarMonth), dateRange.dateEnd)
       }
     } else {
-      isDateWithinSelectedRange = isWithinInterval(date, {
-        start: dateRange.dateStart,
-        end: dateRange.dateEnd,
-      })
+      isDateWithinSelectedRange = isWithinRange(date, [
+        dateRange.dateStart,
+        dateRange.dateEnd
+      ])
 
       // if date is the start OR end
       setIsStart(isEqual(date, dateRange.dateStart))
@@ -60,7 +58,7 @@ const useDateHighlight = (
     outsideDayType,
     calendarMonth,
     dateRange.dateEnd,
-    dateRange.dateStart,
+    dateRange.dateStart
   ])
 
   return { isHighlighted, isStart, isEnd }

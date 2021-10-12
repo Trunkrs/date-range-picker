@@ -1,6 +1,6 @@
 import React from 'react'
-import { getDaysInMonth } from 'date-fns'
 
+import useUtils from '../../../hooks/useUtils'
 import Day from '../Day'
 
 export interface DaysProps {
@@ -12,8 +12,10 @@ export interface DaysProps {
 export const PreviousDays: React.FC<DaysProps> = ({
   month,
   year,
-  showOutsideDays,
+  showOutsideDays
 }) => {
+  const { getDaysInMonth } = useUtils()
+
   const firstDayOfTheMonth = new Date(year, month, 1)
   const firstDayIndex = firstDayOfTheMonth.getDay()
   const prevMonthLastDay = getDaysInMonth(new Date(year, month - 1, 15))
@@ -29,7 +31,7 @@ export const PreviousDays: React.FC<DaysProps> = ({
             date={new Date(year, month - 1, display)}
             key={`prevDay${display}`}
             show={showOutsideDays}
-            outsideDayType="prev"
+            outsideDayType='prev'
             calendarMonth={new Date(year, month)}
           >
             {display}

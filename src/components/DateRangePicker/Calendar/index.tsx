@@ -1,8 +1,8 @@
 import React from 'react'
 
 import clsx from 'clsx'
-import format from 'date-fns/format'
 
+import useUtils from '../../../hooks/useUtils'
 import Weekdays from '../Weekdays'
 import Typography from '../../Typography'
 
@@ -30,18 +30,19 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
       showOutsideDays = false,
       showWeekends = false,
       hideWeekdayNames = false,
-      onDateClick,
+      onDateClick
     },
-    ref,
+    ref
   ) => {
+    const { formatByString } = useUtils()
     const classes = useStyles()
 
     return (
       <div ref={ref} className={clsx(classes.container, className)}>
         <div className={classes.calendar}>
           <div className={classes.month}>
-            <Typography variant="textBold">
-              {format(new Date(year, month), 'MMMM yyyy')}
+            <Typography variant='textBold'>
+              {formatByString(new Date(year, month), 'MMMM yyyy')}
             </Typography>
           </div>
 
@@ -54,7 +55,7 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
           <div
             className={clsx(
               classes.dateGrid,
-              showWeekends && classes.showWeekends,
+              showWeekends && classes.showWeekends
             )}
           >
             <PreviousDays
@@ -72,7 +73,7 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
         </div>
       </div>
     )
-  },
+  }
 )
 
 export default React.memo(Calendar)

@@ -1,10 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useReducer } from 'react'
 
-import isBefore from 'date-fns/isBefore'
-import isSameDay from 'date-fns/isSameDay'
-import differenceInDays from 'date-fns/differenceInDays'
-import isWithinInterval from 'date-fns/isWithinInterval'
-
+import useUtils from '../../hooks/useUtils'
 import Picker from './Picker'
 import DateRange, { DateRangeContext } from './DateRange'
 import reducer, { initialState } from './reducer'
@@ -26,6 +22,8 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
   onUpdate,
   presetDates
 }) => {
+  const { isBefore, isSameDay, getDiff, isWithinRange } = useUtils()
+
   const [state, dispatch] = useReducer(reducer, initialState)
   const prevPreset = useRefValue(presetDates)
 
@@ -77,7 +75,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
 
       // if user clicked before the startDate and dateEnd is available
       if (isBefore(date, dateStart) && dateEnd) {
-        if (differenceInDays(dateStart, date) < 14) {
+        if (getDiff(dateStart, date, 'days') < 14) {
           dispatch({
             type: DATE_RANGE_ACTIONS.CHANGE_DATE_START,
             payload: date
@@ -100,11 +98,8 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
       // if user clicked within the existing dateRange
       if (
         dateEnd &&
-        isWithinInterval(date, {
-          start: dateStart,
-          end: dateEnd
-        }) &&
-        differenceInDays(date, dateStart) < 10
+        isWithinRange(date, [dateStart, dateEnd]) &&
+        getDiff(date, dateStart, 'days') < 10
       ) {
         dispatch({
           type: DATE_RANGE_ACTIONS.CHANGE_DATE_START,

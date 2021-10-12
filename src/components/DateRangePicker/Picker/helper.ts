@@ -1,19 +1,20 @@
-import subMonths from 'date-fns/subMonths'
-import addMonths from 'date-fns/addMonths'
+import useUtils from '../../../hooks/useUtils'
 
-interface Calendar {
+export interface CalendarValue {
   date: Date
   key: number
 }
 
 export const getNextSetOfCalendarMonthsToView = (
-  calendars: Calendar[],
-  count = 1,
-): Calendar[] => {
+  calendars: CalendarValue[],
+  count = 1
+): CalendarValue[] => {
+  const { addMonths } = useUtils()
+
   const newCalendars = [...calendars]
   newCalendars.splice(0, 0, {
-    date: subMonths(calendars[0].date, count),
-    key: calendars[0].key - count,
+    date: addMonths(calendars[0].date, -count) as Date,
+    key: calendars[0].key - count
   })
   newCalendars.pop()
 
@@ -21,15 +22,17 @@ export const getNextSetOfCalendarMonthsToView = (
 }
 
 export const getPreviousSetOfCalendarMonthToView = (
-  calendars: Calendar[],
-  count = 1,
-): Calendar[] => {
+  calendars: CalendarValue[],
+  count = 1
+): CalendarValue[] => {
+  const { addMonths } = useUtils()
+
   const newCalendars = [...calendars]
   const secondCalendar = calendars[calendars.length - 1]
   newCalendars.shift()
   newCalendars.push({
-    date: addMonths(secondCalendar.date, count),
-    key: secondCalendar.key + count,
+    date: addMonths(secondCalendar.date, count) as Date,
+    key: secondCalendar.key + count
   })
 
   return newCalendars

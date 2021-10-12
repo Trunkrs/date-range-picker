@@ -1,6 +1,6 @@
 import React from 'react'
-import { getDaysInMonth } from 'date-fns'
 
+import useUtils from '../../../hooks/useUtils'
 import Day from '../Day'
 
 export interface DaysProps {
@@ -10,6 +10,8 @@ export interface DaysProps {
 }
 
 export const Days: React.FC<DaysProps> = ({ month, year, onDateClick }) => {
+  const { getDaysInMonth } = useUtils()
+
   const numberOfDays = getDaysInMonth(new Date(year, month))
   const daysArray = Array.from(Array(numberOfDays).keys())
 

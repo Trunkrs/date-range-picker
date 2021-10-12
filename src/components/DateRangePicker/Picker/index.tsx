@@ -3,30 +3,26 @@ import React, {
   useCallback,
   useMemo,
   useContext,
-  useEffect,
+  useEffect
 } from 'react'
 
 import clsx from 'clsx'
 import { useTheme } from '@material-ui/core/styles'
-
 import { useTransition, config, animated } from 'react-spring'
-
-import addMonths from 'date-fns/addMonths'
-import subMonths from 'date-fns/subMonths'
-import isSameMonth from 'date-fns/isSameMonth'
-import differenceInMonths from 'date-fns/differenceInMonths'
 import ButtonBase from '@material-ui/core/ButtonBase'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 
+import useUtils from '../../../hooks/useUtils'
 import Calendar from '../Calendar'
 import Weekdays from '../Weekdays'
 import useStyles from './useStyles'
 import useRefValue from '../../../hooks/useRefValue'
 import DateRange from '../DateRange'
 import {
+  CalendarValue,
   getNextSetOfCalendarMonthsToView,
-  getPreviousSetOfCalendarMonthToView,
+  getPreviousSetOfCalendarMonthToView
 } from './helper'
 
 export interface PickerProps {
@@ -40,13 +36,15 @@ export const Picker: React.FC<PickerProps> = ({
   initialDate,
   showWeekends = true,
   showOutsideDays = true,
-  onDateClick,
+  onDateClick
 }) => {
-  const [calendars, setCalendars] = useState([
-    { date: subMonths(initialDate, 1), key: -1 },
+  const { addMonths, isSameMonth, getDiff } = useUtils()
+
+  const [calendars, setCalendars] = useState<CalendarValue[]>([
+    { date: addMonths(initialDate, -1) as Date, key: -1 },
     { date: initialDate, key: 0 },
-    { date: addMonths(initialDate, 1), key: 1 },
-    { date: addMonths(initialDate, 2), key: 2 },
+    { date: addMonths(initialDate, 1) as Date, key: 1 },
+    { date: addMonths(initialDate, 2) as Date, key: 2 }
   ])
   const [adjustment, setAdjustment] = useState(0)
   const dateRange = useContext(DateRange)
@@ -64,7 +62,7 @@ export const Picker: React.FC<PickerProps> = ({
       const newCalendars = getNextSetOfCalendarMonthsToView(calendars, count)
       setCalendars(newCalendars)
     },
-    [calendars],
+    [calendars]
   )
 
   const handleNext = useCallback(
@@ -72,7 +70,7 @@ export const Picker: React.FC<PickerProps> = ({
       const newCalendars = getPreviousSetOfCalendarMonthToView(calendars, count)
       setCalendars(newCalendars)
     },
-    [calendars],
+    [calendars]
   )
 
   const handleWheel = useCallback(
@@ -84,7 +82,7 @@ export const Picker: React.FC<PickerProps> = ({
 
       handlePrev()
     },
-    [handleNext, handlePrev],
+    [handleNext, handlePrev]
   )
 
   // animate to the correct calendar if date1 is out of view
@@ -96,7 +94,7 @@ export const Picker: React.FC<PickerProps> = ({
       !isSameMonth(dateRange.dateStart, calendars[2].date)
 
     if (isDateOutOfView) {
-      const diff = differenceInMonths(dateRange.dateStart, calendars[1].date)
+      const diff = getDiff(dateRange.dateStart, calendars[1].date, 'months')
       const skip = Math.abs(diff) - 5
 
       if (diff > 5) {
@@ -137,8 +135,8 @@ export const Picker: React.FC<PickerProps> = ({
     leave: { width: '0%' },
     config: {
       ...config.stiff,
-      clamp: true,
-    },
+      clamp: true
+    }
   })
 
   return (
