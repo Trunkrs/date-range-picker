@@ -1,0 +1,10 @@
+export type Colors =
+  | 'indigo'
+  | 'green'
+  | 'action'
+  | 'danger'
+  | 'warning'
+  | 'grey'
+  | 'lightGrey'
+  | 'theBeast'
+  | 'white'

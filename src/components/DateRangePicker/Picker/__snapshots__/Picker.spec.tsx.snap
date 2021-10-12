@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Picker /> should match snapshot 1`] = `
+<div
+  className="makeStyles-pickerRoot-1"
+  onWheel={[Function]}
+  style={
+    Object {
+      "width": 464,
+    }
+  }
+>
+  <div
+    className="makeStyles-calendars-2"
+  >
+    <Animated(div)
+      key="-1"
+      style={
+        Object {
+          "width": "100%",
+        }
+      }
+    >
+      <Memo(ForwardRef)
+        hideWeekdayNames={true}
+        month={8}
+        onDateClick={[MockFunction]}
+        showOutsideDays={true}
+        showWeekends={false}
+        year={2020}
+      />
+    </Animated(div)>
+    <Animated(div)
+      key="0"
+      style={
+        Object {
+          "width": "100%",
+        }
+      }
+    >
+      <Memo(ForwardRef)
+        hideWeekdayNames={true}
+        month={9}
+        onDateClick={[MockFunction]}
+        showOutsideDays={true}
+        showWeekends={false}
+        year={2020}
+      />
+    </Animated(div)>
+    <Animated(div)
+      key="1"
+      style={
+        Object {
+          "width": "100%",
+        }
+      }
+    >
+      <Memo(ForwardRef)
+        hideWeekdayNames={true}
+        month={10}
+        onDateClick={[MockFunction]}
+        showOutsideDays={true}
+        showWeekends={false}
+        year={2020}
+      />
+    </Animated(div)>
+    <Animated(div)
+      key="2"
+      style={
+        Object {
+          "width": "100%",
+        }
+      }
+    >
+      <Memo(ForwardRef)
+        hideWeekdayNames={true}
+        month={11}
+        onDateClick={[MockFunction]}
+        showOutsideDays={true}
+        showWeekends={false}
+        year={2020}
+      />
+    </Animated(div)>
+  </div>
+  <div
+    className="makeStyles-controls-3 makeStyles-fixedElement-6"
+  >
+    <WithStyles(ForwardRef(ButtonBase))
+      onClick={[Function]}
+    >
+      <Memo(ForwardRef(ChevronLeftIcon))
+        className="makeStyles-chevron-4"
+      />
+    </WithStyles(ForwardRef(ButtonBase))>
+    <WithStyles(ForwardRef(ButtonBase))
+      onClick={[Function]}
+    >
+      <Memo(ForwardRef(ChevronRightIcon))
+        className="makeStyles-chevron-4"
+      />
+    </WithStyles(ForwardRef(ButtonBase))>
+  </div>
+  <div
+    className="makeStyles-weekdays-5 makeStyles-fixedElement-6"
+  >
+    <Memo(Weekdays)
+      showWeekends={false}
+    />
+    <Memo(Weekdays)
+      showWeekends={false}
+    />
+  </div>
+</div>
+`;

@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Weekdays /> should match snapshot 1`] = `
+<div
+  className="makeStyles-weekdays-1 makeStyles-showWeekends-3"
+>
+  <WithStyles(Typography)
+    className="makeStyles-weekdayName-2"
+    key="Su"
+    variant="textBold"
+  >
+    Su
+  </WithStyles(Typography)>
+  <WithStyles(Typography)
+    className="makeStyles-weekdayName-2"
+    key="Mo"
+    variant="textBold"
+  >
+    Mo
+  </WithStyles(Typography)>
+  <WithStyles(Typography)
+    className="makeStyles-weekdayName-2"
+    key="Tu"
+    variant="textBold"
+  >
+    Tu
+  </WithStyles(Typography)>
+  <WithStyles(Typography)
+    className="makeStyles-weekdayName-2"
+    key="We"
+    variant="textBold"
+  >
+    We
+  </WithStyles(Typography)>
+  <WithStyles(Typography)
+    className="makeStyles-weekdayName-2"
+    key="Th"
+    variant="textBold"
+  >
+    Th
+  </WithStyles(Typography)>
+  <WithStyles(Typography)
+    className="makeStyles-weekdayName-2"
+    key="Fr"
+    variant="textBold"
+  >
+    Fr
+  </WithStyles(Typography)>
+  <WithStyles(Typography)
+    className="makeStyles-weekdayName-2"
+    key="Sa"
+    variant="textBold"
+  >
+    Sa
+  </WithStyles(Typography)>
+</div>
+`;
