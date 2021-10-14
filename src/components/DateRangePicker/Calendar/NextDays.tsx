@@ -10,11 +10,11 @@ export interface DaysProps {
 export const NextDays: React.FC<DaysProps> = ({
   month,
   year,
-  showOutsideDays,
+  showOutsideDays
 }) => {
   const nextDaysArray = Array.from(Array(14).keys())
   return (
-    <>
+    <React.Fragment>
       {nextDaysArray.map((day) => {
         const display = day + 1
         return (
@@ -22,14 +22,14 @@ export const NextDays: React.FC<DaysProps> = ({
             date={new Date(year, month + 1, display)}
             key={`nextDay${display}`}
             show={showOutsideDays}
-            outsideDayType="next"
+            outsideDayType='next'
             calendarMonth={new Date(year, month)}
           >
             {display}
           </Day>
         )
       })}
-    </>
+    </React.Fragment>
   )
 }
 

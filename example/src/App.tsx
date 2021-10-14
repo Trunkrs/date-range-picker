@@ -1,10 +1,16 @@
 import React from 'react'
 
-import { ExampleComponent } from 'date-range-picker'
-import 'date-range-picker/dist/index.css'
+import DateRangePicker, {
+  DateRangePickerProvider,
+  DateFnsAdapter
+} from 'date-range-picker'
 
 const App = () => {
-  return <ExampleComponent text='Create React Library Example 😄' />
+  return (
+    <DateRangePickerProvider dateAdapter={DateFnsAdapter}>
+      <DateRangePicker initialDate={new Date()} />
+    </DateRangePickerProvider>
+  )
 }
 
 export default App

@@ -16,7 +16,7 @@ export const Days: React.FC<DaysProps> = ({ month, year, onDateClick }) => {
   const daysArray = Array.from(Array(numberOfDays).keys())
 
   return (
-    <>
+    <React.Fragment>
       {daysArray.map((day) => {
         const display = day + 1
         return (
@@ -29,7 +29,7 @@ export const Days: React.FC<DaysProps> = ({ month, year, onDateClick }) => {
           </Day>
         )
       })}
-    </>
+    </React.Fragment>
   )
 }
 

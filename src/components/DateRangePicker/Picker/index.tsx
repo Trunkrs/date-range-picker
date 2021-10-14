@@ -7,8 +7,8 @@ import React, {
 } from 'react'
 
 import clsx from 'clsx'
-import { useTheme } from '@material-ui/core/styles'
 import { useTransition, config, animated } from 'react-spring'
+import { useTheme } from '@material-ui/core/styles'
 import ButtonBase from '@material-ui/core/ButtonBase'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'

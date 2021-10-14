@@ -23,7 +23,7 @@ export const PreviousDays: React.FC<DaysProps> = ({
   const prevDaysArray = Array.from(Array(prevMonthLastDay - startDay).keys())
 
   return (
-    <>
+    <React.Fragment>
       {prevDaysArray.map((day) => {
         const display = startDay + day + 1
         return (
@@ -38,7 +38,7 @@ export const PreviousDays: React.FC<DaysProps> = ({
           </Day>
         )
       })}
-    </>
+    </React.Fragment>
   )
 }
 
