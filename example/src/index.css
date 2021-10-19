@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'ClanPro-Book';
+  src: url('/fonts/ClanProBook.woff2') format('woff2'),
+    url('/fonts/ClanProBook.woff') format('woff'),
+    url('/fonts/ClanProBook.otf') format('opentype');
+}
+@font-face {
+  font-family: 'ClanPro-News';
+  src: url('/fonts/ClanProNews.woff2') format('woff2'),
+    url('/fonts/ClanProNews.woff') format('woff'),
+    url('/fonts/ClanProNews.otf') format('opentype');
+}
+@font-face {
+  font-family: 'ClanPro-Bold';
+  src: url('/fonts/ClanProBold.woff2') format('woff2'),
+    url('/fonts/ClanProBold.woff') format('woff'),
+    url('/fonts/ClanProBold.otf') format('opentype');
+}

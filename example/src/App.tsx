@@ -8,7 +8,7 @@ import DateRangePicker, {
 const App = () => {
   return (
     <DateRangePickerProvider dateAdapter={DateFnsAdapter}>
-      <DateRangePicker initialDate={new Date()} />
+      <DateRangePicker initialDate={new Date()} showWeekends showOutsideDays />
     </DateRangePickerProvider>
   )
 }
