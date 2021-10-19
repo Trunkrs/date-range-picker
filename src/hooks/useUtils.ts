@@ -4,8 +4,14 @@ import { DateRangePickerAdapterContext } from '../providers/DateRangePickerProvi
 
 export type DatePickersAdapter<TDate = Date> = IUtils<TDate>
 
-export const useUtils = () => {
+export const useUtils = (): DatePickersAdapter => {
   const utils = React.useContext(DateRangePickerAdapterContext)
+
+  if (!utils) {
+    throw new Error(
+      'Cannot find utils in context. To fix this wrap your component in DateRangeProvider'
+    )
+  }
 
   return utils
 }

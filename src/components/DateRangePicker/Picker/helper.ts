@@ -1,5 +1,3 @@
-import useUtils from '../../../hooks/useUtils'
-
 export interface CalendarValue {
   date: Date
   key: number
@@ -7,10 +5,9 @@ export interface CalendarValue {
 
 export const getNextSetOfCalendarMonthsToView = (
   calendars: CalendarValue[],
-  count = 1
+  count = 1,
+  addMonths: (value: Date, count: number) => Date
 ): CalendarValue[] => {
-  const { addMonths } = useUtils()
-
   const newCalendars = [...calendars]
   newCalendars.splice(0, 0, {
     date: addMonths(calendars[0].date, -count) as Date,
@@ -23,10 +20,9 @@ export const getNextSetOfCalendarMonthsToView = (
 
 export const getPreviousSetOfCalendarMonthToView = (
   calendars: CalendarValue[],
-  count = 1
+  count = 1,
+  addMonths: (value: Date, count: number) => Date
 ): CalendarValue[] => {
-  const { addMonths } = useUtils()
-
   const newCalendars = [...calendars]
   const secondCalendar = calendars[calendars.length - 1]
   newCalendars.shift()

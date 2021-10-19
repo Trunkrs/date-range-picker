@@ -59,7 +59,11 @@ export const Picker: React.FC<PickerProps> = ({
 
   const handlePrev = useCallback(
     (_e?: React.SyntheticEvent, count = 1) => {
-      const newCalendars = getNextSetOfCalendarMonthsToView(calendars, count)
+      const newCalendars = getNextSetOfCalendarMonthsToView(
+        calendars,
+        count,
+        addMonths
+      )
       setCalendars(newCalendars)
     },
     [calendars]
@@ -67,7 +71,11 @@ export const Picker: React.FC<PickerProps> = ({
 
   const handleNext = useCallback(
     (_e?: React.SyntheticEvent, count = 1) => {
-      const newCalendars = getPreviousSetOfCalendarMonthToView(calendars, count)
+      const newCalendars = getPreviousSetOfCalendarMonthToView(
+        calendars,
+        count,
+        addMonths
+      )
       setCalendars(newCalendars)
     },
     [calendars]
